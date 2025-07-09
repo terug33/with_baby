@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  namespace :public do
+  #管理者用
+  devise_for :admins, controllers:{
+    sessions: 'admin/sessions'
+  }
+
+  #ユーザー用
+  scope module: :public do
+    root to: 'homes#top'
     get 'homes/top'
+    devise_for :users, controllers:{
+      registrations: 'public/registrations',
+      sessions: 'public/sessions'
+    }
   end
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
