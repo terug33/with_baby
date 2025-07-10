@@ -1,0 +1,27 @@
+#会員側のヘッダー
+<header>
+  <nav class="navbar" style="height: 100px; display: flex; justify-content: space-between; align-items-center;">
+    <div class="header-left">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', alt: 'with baby logo', class:'header-logo' %>
+      <% end %>
+    </div>
+
+
+    <ul class="header-right" style="display: flex; flex-direction: row">
+      <% if user_signed_in? %>
+        <li class="nav-item">店舗一覧</li>
+        <li class="nav-item"><%= link_to "アバウト", about_path %></li>
+        <li class="nav-item">マイページ</li>
+        <li class="nav-item">新規店舗登録</li>
+        <li class="nav-item">ログアウト</li>
+      <% else %>
+        <li class="nav-item">店舗一覧</li>
+        <li class="nav-item">アバウト</li>
+        <li class="nav-item">新規登録</li>
+        <li class="nav-item">ゲストログイン</li>
+        <li class="nav-item">ログイン</li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
