@@ -7,10 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%# 管理者と会員でヘッダーを切り替えるため %>
+    <% if controller_path.starts_with?("admin/") %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

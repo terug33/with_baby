@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'homes/top'
+    get 'about' => 'homes#about'
     devise_for :users, controllers:{
       registrations: 'public/registrations',
       sessions: 'public/sessions'
