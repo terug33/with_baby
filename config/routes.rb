@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'stores/index'
+    get 'stores/show'
+    get 'stores/search'
+  end
+  namespace :public do
+    get 'stores/index'
+    get 'stores/show'
+    get 'stores/new'
+    get 'stores/edit'
+  end
   #管理者用
   devise_for :admins, controllers:{
     sessions: 'admin/sessions'
