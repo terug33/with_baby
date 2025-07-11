@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_07_11_064525) do
+ActiveRecord::Schema.define(version: 2025_07_11_103348) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(version: 2025_07_11_064525) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "store_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_comments_on_store_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "store_tags", force: :cascade do |t|
+    t.integer "store_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_store_tags_on_store_id"
+    t.index ["tag_id"], name: "index_store_tags_on_tag_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "category_id", null: false
@@ -47,6 +66,13 @@ ActiveRecord::Schema.define(version: 2025_07_11_064525) do
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -60,6 +86,10 @@ ActiveRecord::Schema.define(version: 2025_07_11_064525) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "stores"
+  add_foreign_key "comments", "users"
+  add_foreign_key "store_tags", "stores"
+  add_foreign_key "store_tags", "tags"
   add_foreign_key "stores", "categories"
   add_foreign_key "stores", "users"
 end
