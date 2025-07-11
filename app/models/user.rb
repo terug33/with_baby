@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 #アソシエーション
-  has_many :stores
+  has_many :stores, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
 #devise機能

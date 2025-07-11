@@ -1,28 +1,34 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'stores/index'
-    get 'stores/show'
-    get 'stores/search'
+    #管理者ログイン用（devise）
+    devise_for :admins, controllers:{
+      sessions: 'admin/sessions'
+    }
+
+    resources :stores, only: [:index, :show, :destroy] do 
+      collection do 
+        get 'search'
+      end 
+    end 
   end
-  namespace :public do
-    get 'stores/index'
-    get 'stores/show'
-    get 'stores/new'
-    get 'stores/edit'
-  end
-  #管理者用
-  devise_for :admins, controllers:{
-    sessions: 'admin/sessions'
-  }
+
+ 
 
   #ユーザー用
   scope module: :public do
-    root to: 'homes#top'
-    get 'homes/top'
-    get 'about' => 'homes#about'
+    #ユーザー用ログイン
     devise_for :users, controllers:{
       registrations: 'public/registrations',
       sessions: 'public/sessions'
     }
+
+    #ルート
+    root to: 'homes#top'
+
+    #アバウトページ
+    get 'about' => 'homes#about'
+    
+    #投稿機能
+    resources :stores
   end
 end
