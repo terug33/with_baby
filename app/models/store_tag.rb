@@ -5,5 +5,5 @@ class StoreTag < ApplicationRecord
   belongs_to :tag
 
   #バリデーション
-  
+  validates :store_id, uniqueness: {scope: :tag_id}
 end
