@@ -1,7 +1,7 @@
 class Public::StoresController < ApplicationController
 
-  before_acition :authenticate_user!
-  before_acition :correct_user, only[:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def correct_user 
     @store = Store.find(params[:id])
@@ -29,6 +29,7 @@ class Public::StoresController < ApplicationController
     else 
       render :new 
     end 
+  end 
 
   def edit
     @store = Store.find(params[:id])
@@ -38,6 +39,9 @@ class Public::StoresController < ApplicationController
     @store = Store.find(params[:id])
     if @store.update(store_params)
       redirect_to @store, notice:"更新できました"
+    else 
+      render :edit 
+    end 
   end 
 
   def destroy 
