@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     
     #投稿機能
-    resources :stores
+    resources :stores do 
+      collection do 
+        get 'search'
+      end 
+    end 
   end
 end

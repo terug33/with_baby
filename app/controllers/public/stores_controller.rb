@@ -18,6 +18,15 @@ class Public::StoresController < ApplicationController
     @store = Store.find(params[:id])
   end
 
+  def search 
+    @keyword = params[:keyword]
+    if @keyword.present?
+      @stores = Store.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
+    else 
+      @stores = Store.none
+    end 
+  end 
+
   def new
     @store = Store.new
   end
@@ -49,6 +58,9 @@ class Public::StoresController < ApplicationController
     @store.destroy 
     redirect_to stores_path, notice:"削除できました"
   end 
+
+
+  private
 
   def store_params
     params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude)
