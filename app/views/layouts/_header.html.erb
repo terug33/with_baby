@@ -1,48 +1,49 @@
 <!--  会員側のヘッダー -->
-<nav class="navbar" style="height: 100px; display: flex; justify-content: space-between; align-items-center;">
-  <div class="header-left">
-    <%= link_to root_path do %>
-      <%= image_tag 'logo.png', alt: 'with baby logo', class:'header-logo' %>
-    <% end %>
-  </div>
-
-
-  <ul class="header-right" style="display: flex; flex-direction: row">
-    <% if user_signed_in? %>
-      <li class="nav-item">店舗一覧</li>
-      <li class="nav-item"><%= link_to "アバウト", about_path %></li>
-      <li class="nav-item">マイページ</li>
-      <li class="nav-item">新規店舗登録</li>
-      <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li class="nav-item">店舗一覧</li>
-      <li class="nav-item">アバウト</li>
-      <li class="nav-item">新規登録</li>
-      <li class="nav-item">ゲストログイン</li>
-      <li class="nav-item">ログイン</li>
-    <% end %>
-  </ul>
-</nav>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'logo.png', alt: 'with baby logo', class:'header-logo' %>
     <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to "店舗一覧", "stores_path", class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "アバウト", about_path, class: "nav-link" %></li>
         <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "店舗一覧", "#", class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "新規店舗登録", new_store_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "マイページ", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "サインアップ", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "会員登録", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ゲストログイン", class: "nav-link" %></li>
         <% end %>
-        <li class="nav-item"><%= link_to "アバウト", about_path, class: "nav-link" %></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <%= link_to root_path, class:"navbar-brand" do %>
+        <%= image_tag 'logo.png', alt:'with baby logo', class:'header-logo' %>
+      <% end %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "店舗一覧", stores_path, class:"nav-link" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "店舗一覧", stores_path, class:"nav-link" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
