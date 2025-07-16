@@ -29,6 +29,7 @@ class Public::StoresController < ApplicationController
 
   def new
     @store = Store.new
+    @categories = Category.all
   end
 
   def create
@@ -36,6 +37,7 @@ class Public::StoresController < ApplicationController
     if @store.save 
       redirect_to @store, notice:"保存できました"
     else 
+      @categories = Category.all
       render :new 
     end 
   end 
@@ -63,6 +65,6 @@ class Public::StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude)
+    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude, :category_id)
   end 
 end
