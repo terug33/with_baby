@@ -12,11 +12,7 @@
   <body>
     <!-- 管理者と会員でヘッダーを切り替えるため -->
     <header>
-      <% if controller_path.starts_with?("admin/") %>
-        <%= render 'layouts/admin_header' %>
-      <% else %>
-        <%= render 'layouts/header' %>
-      <% end %>
+      <%= render 'layouts/header' %>
     </header>
 
     <div class="container">

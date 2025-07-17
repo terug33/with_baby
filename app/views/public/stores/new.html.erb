@@ -34,6 +34,11 @@
   </div>
 
   <div>
+    <%= f.label :images, '店舗画像(複数可)' %><br>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+  <div>
     <%= f.submit '登録する' %>
   </div>
 <% end %>

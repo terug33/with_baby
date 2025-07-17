@@ -65,6 +65,6 @@ class Public::StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude, :category_id)
+    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude, :category_id, images:[])
   end 
 end
