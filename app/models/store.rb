@@ -4,8 +4,8 @@ class Store < ApplicationRecord
   belongs_to :user 
   belongs_to :category
   has_many :comments, dependent: :destroy
-  # has_many :store_tags, dependent: :destroy
   has_many :tags, through: :store_tags
+  has_many_attached :images 
 
 
 
