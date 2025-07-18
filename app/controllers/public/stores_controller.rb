@@ -1,6 +1,5 @@
-class Public::StoresController < ApplicationController
+class Public::StoresController < Public::BaseController
 
-  before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def correct_user 

@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'tops/top'
-  end
   #管理者ログイン用（devise）
   devise_for :admins, path: 'admin', controllers:{
     sessions: 'admin/sessions'
@@ -24,7 +18,7 @@ Rails.application.routes.draw do
         get 'search'
       end 
     end 
-    resources :tags, only: [:index, :create]
+    resources :tags, only: [:index, :create, :destroy]
     root to: 'homes#top'
   end
 

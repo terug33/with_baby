@@ -1,3 +1,4 @@
+<!--admin側のレイアウトファイル-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,6 +16,7 @@
     </header>
 
     <main class="container">
+      <%= render 'shared/flash_messages' %>
       <%= yield %>
     </main>
   </body>
