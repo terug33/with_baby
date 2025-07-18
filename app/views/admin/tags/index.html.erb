@@ -1,0 +1,24 @@
+<h2>タグ一覧</h2>
+
+<ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= tag.name %>
+      <%= link_to '削除', admin_tag_path(tag), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_with model: [:admin, @tag], local: true do |f| %>
+
+  <!--エラーメッセージ呼び出し用-->
+  <%= render 'admin/shared/error_messages', resource: @tag %>  
+
+  <div class="form-group">
+    <%= f.label :name, "タグ名" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <%= f.submit "タグを追加", class: "btn btn-primary mt-2" %>
+<% end %>
+

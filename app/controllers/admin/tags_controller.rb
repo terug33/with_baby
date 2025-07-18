@@ -14,6 +14,12 @@ class Admin::TagsController < Admin::BaseController
     end 
   end 
 
+  def destroy
+    tag = Tag.find(params[:id])
+    tag.destroy
+    redirect_to admin_tags_path, notice: 'タグを削除しました'
+  end 
+
   
   private
 

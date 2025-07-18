@@ -1,3 +1,4 @@
+<!--public側のレイアウトファイル-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,24 +11,13 @@
   </head>
 
   <body>
-    <!-- 管理者と会員でヘッダーを切り替えるため -->
     <header>
       <%= render 'layouts/header' %>
     </header>
 
+    
     <div class="container">
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-
-      <% if flash[:alert] %>
-        <div class="alert alert-dander">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-
+      <%= render 'shared/flash_messages' %>
       <%= yield %>
     </div>
   </body>
