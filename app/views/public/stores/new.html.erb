@@ -24,6 +24,15 @@
   </div>
 
   <div>
+    <%= f.label :tag_ids, 'タグ（複数選択可）' %><br>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name do |cb| %>
+      <div>
+        <%= cb.check_box %><%= cb.text %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
     <%= f.label :zip_code, '郵便番号' %><br>
     <%= f.text_field :zip_code %>
   </div>

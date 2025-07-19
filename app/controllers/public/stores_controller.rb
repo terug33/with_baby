@@ -29,6 +29,7 @@ class Public::StoresController < Public::BaseController
   def new
     @store = Store.new
     @categories = Category.all
+    @tags = Tag.all
   end
 
   def create
@@ -64,6 +65,6 @@ class Public::StoresController < Public::BaseController
   private
 
   def store_params
-    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude, :category_id, images:[])
+    params.require(:store).permit(:name, :description, :score, :address, :zip_code, :latitude, :longitude, :category_id, images:[], tag_ids:[])
   end 
 end
