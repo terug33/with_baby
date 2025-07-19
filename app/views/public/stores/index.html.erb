@@ -1,2 +1,32 @@
-<h1>Public::Stores#index</h1>
-<p>Find me in app/views/public/stores/index.html.erb</p>
+<h2>public側の投稿一覧</h2>
+
+<% if @stores.any? %>
+  <div>
+    <% @stores.each do |store| %>
+      <div class="card mb-4 p-3 border rounded">
+        <h4><%= link_to store.name, store_path(store) %></h4>
+
+        <p><strong>投稿者：</strong><%= store.user.name %></p>
+        <p><strong>評価：</strong><%= store.score %></p>
+        <p><strong>カテゴリ：</strong><%= store.category.name %></p>
+
+        <p><strong>タグ：</strong>
+          <% store.tags.each do |tag| %>
+            <span class="badge badge-secondary"><%= tag.name %></span>
+          <% end %>
+        </p>
+
+        <p><%= truncate(store.description, length:100) %></p>
+
+        <%= link_to '詳細を見る', store_path(store), class:"btn btn-sm btn-outline-primary" %>
+
+        <% if user_signed_in? && current_user == store.user %>
+          <%= link_to '編集', edit_store_path(store), class:"btn btn-sm btn-outline-success" %>
+          <%= link_to '削除', store_path(store), method: :delete, class:"btn btn-sm btn-outline-danger", data: {confirm: '削除してもいいですか？'} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>投稿がまだありません</p>
+<% end %>
