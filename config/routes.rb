@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     
     #投稿機能
     resources :stores do 
+      resources :comments, only: [:create, :destroy]
       collection do 
         get 'search'
       end 

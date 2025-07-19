@@ -29,5 +29,24 @@
         <%= link_to '削除する', store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
       <% end %>
 
+
+      <h4>コメント一覧</h4>
+      <% @store.comments.each do |comment| %>
+        <div class="border p-2 mb-2">
+          <p><%= comment.user.name %></p>
+          <p><%= comment.content %></p>
+
+          <% if comment.user == current_user %>
+            <%= link_to '削除', store_comment_path(@store,comment), method: :delete, class: "btn btn-sm btn-outline-danger", data:{confirm: "本当に削除しますか？"} %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <h4>コメントを投稿する</h4>
+      <%= form_with model: [@store, @comment], local: true do |f| %>
+        <%= f.label :content, "コメント内容" %>
+        <%= f.text_area :content %>
+        <%= f.submit "投稿する", class: "btn btn-sm btn-success" %>
+      <% end %>
     </div>
   </div>

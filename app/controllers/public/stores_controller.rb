@@ -1,5 +1,6 @@
 class Public::StoresController < Public::BaseController
 
+  #投稿者本人でなければ編集と削除ができない仕様にするため
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def correct_user 
@@ -15,6 +16,7 @@ class Public::StoresController < Public::BaseController
 
   def show
     @store = Store.find(params[:id])
+    @comment = Comment.new
   end
 
   def search 
@@ -57,8 +59,12 @@ class Public::StoresController < Public::BaseController
 
   def destroy 
     @store = Store.find(params[:id])
-    @store.destroy 
-    redirect_to stores_path, notice:"削除できました"
+    if @store.user == current_user
+      @store.destroy 
+      redirect_to stores_path, notice:"削除できました"
+    else 
+      redirect_to stores_path, alert: "削除権限がありません"
+    end 
   end 
 
 
