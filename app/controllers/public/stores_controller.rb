@@ -10,7 +10,7 @@ class Public::StoresController < Public::BaseController
   end 
 
   def index
-    @stores = Store.all
+    @stores = Store.includes(:user, :tags, :category).order(created_at: :desc)
   end
 
   def show
