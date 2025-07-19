@@ -1,24 +1,40 @@
-# README
+# 赤ちゃんと一緒
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+赤ちゃんを連れた人がお店を探しやすいレビューサイト
 
-Things you may want to cover:
+​
+### テーマを選んだ理由
+私は普段から友人や家族とカフェに行くことが多いのですが、先日、赤ちゃん連れの友人と行ったカフェが喫煙可能だったため、利用できず別のお店を探すことになりました。
+このとき、ネットで雰囲気は分かっても、子連れOKかどうかなど細かい情報は分かりにくいと感じました。-
 
-* Ruby version
+カフェやレストランには、喫煙可否やベビーカーの有無など、実際に行かないと分からない情報が多く、特に赤ちゃん連れの人にとっては困ることが多いと思います。
 
-* System dependencies
+そこで、赤ちゃん連れの人が安心してお店を選べるよう、利用者が実際に行って分かった情報を投稿・共有できるサイトを作ることにしました。
+当問題を解決するために、このようなポートフォリオを制作してみようと考えました。
+​
+### ターゲットユーザ
+赤ちゃんをベビーカーで連れている人
+小さい子どもを連れている人
 
-* Configuration
 
-* Database creation
+​
+### 主な利用シーン
+赤ちゃん連れでカフェに行く前に、ベビーカーを置けるか確認したいとき
+小さい子どもを連れていて、店内が禁煙かどうかを知りたいとき
+家族やママ友同士で子どもと一緒に行けるお店を探すとき
 
-* Database initialization
 
-* How to run the test suite
+​
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
