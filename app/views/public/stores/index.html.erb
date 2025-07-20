@@ -19,11 +19,6 @@
         <p><%= truncate(store.description, length:100) %></p>
 
         <%= link_to '詳細を見る', store_path(store), class:"btn btn-sm btn-outline-primary" %>
-
-        <% if user_signed_in? && current_user == store.user %>
-          <%= link_to '編集', edit_store_path(store), class:"btn btn-sm btn-outline-success" %>
-          <%= link_to '削除', store_path(store), method: :delete, class:"btn btn-sm btn-outline-danger", data: {confirm: '削除してもいいですか？'} %>
-        <% end %>
       </div>
     <% end %>
   </div>

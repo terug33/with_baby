@@ -1,0 +1,51 @@
+<!--店舗投稿の新規と編集用の共通フォーム-->
+
+<%= form_with model: @store, local: true do |f| %>
+  <div>
+    <%= f.label :name, '店舗名' %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description, 'レビュー本文' %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :score, '評価(1~5)' %><br>
+    <%= f.select :score, options_for_select(1..5, f.object.score) %>
+  </div>
+
+  <div>
+    <%= f.label :category_id, 'カテゴリ' %><br>
+    <%= f.collection_select :category_id, @categories, :id, :name, prompt: '選択してください' %>
+  </div>
+
+  <div>
+    <%= f.label :tag_ids, 'タグ（複数選択可）' %><br>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name do |cb| %>
+      <div>
+        <%= cb.check_box %><%= cb.text %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :zip_code, '郵便番号' %><br>
+    <%= f.text_field :zip_code %>
+  </div>
+
+  <div>
+    <%= f.label :address, '住所' %><br>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :images, '店舗画像(複数可)' %><br>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+  <div>
+    <%= f.submit @store.new_record? ? "登録する" : "店舗情報を更新する", class:"btn btn-primary btn-sm" %>
+  </div>
+<% end %>

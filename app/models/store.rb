@@ -5,7 +5,7 @@ class Store < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many_attached :images 
-  has_many :store_tags  #中間テーブルとの直接の関連
+  has_many :store_tags, dependent: :destroy  #中間テーブルとの直接の関連
   has_many :tags, through: :store_tags  #Tagとの間接的な関連
   
 
