@@ -30,10 +30,18 @@ Rails.application.routes.draw do
     #ルート
     root to: 'homes#top'
 
-    #アバウトページ
     get 'about' => 'homes#about'
+    get 'mypage', to: 'users#show', as: 'mypage'
+
+
+    #ユーザー編集・更新・退会・検索
+    resources :users, only: [:edit, :update, :destroy] do
+      collection do 
+        get 'search'
+      end 
+    end 
     
-    #投稿機能
+    #投稿機能、コメント、検索
     resources :stores do 
       resources :comments, only: [:create, :destroy]
       collection do 

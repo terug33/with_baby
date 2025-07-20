@@ -1,0 +1,26 @@
+<h3><%= current_user.name %>さんのマイページ</h3>
+
+<p>メールアドレス：<%= current_user.email %></p>
+<%= link_to 'プロフィール編集', edit_user_path(current_user), class: "btn btn-sm btn-primary" %>
+<%= link_to '退会する', user_path(current_user), method: :delete, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
+
+
+<h4><%= current_user.name %>さんの投稿一覧</h4>
+
+<% if @stores.any? %>
+  <% @stores.each do |store| %>
+    <div>
+      <% if store.images.attached? %>
+        <% store.images.each do |image| %>
+          <%= image_tag image.variant(resize_to_limit: [600,400]), class:"img-fluid" %>
+        <% end %>
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+
+      <p><%= link_to store.name, store_path(store) %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ投稿がありません</p>
+<% end %> 
