@@ -4,6 +4,7 @@
 <%= link_to 'プロフィール編集', edit_user_path(current_user), class: "btn btn-sm btn-primary" %>
 <%= link_to '退会する', user_path(current_user), method: :delete, data: {confirm: "本当に退会しますか？"}, class: "btn btn-sm btn-danger" %>
 
+<hr>
 
 <h4><%= current_user.name %>さんの投稿一覧</h4>
 
