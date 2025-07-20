@@ -1,2 +1,6 @@
-<h1>Public::Stores#edit</h1>
-<p>Find me in app/views/public/stores/edit.html.erb</p>
+<h3>public側の投稿編集ページ</h3>
+
+<!--バリデーションエラーのメッセージのパーシャル-->
+<%= render 'public/shared/error_messages', resource: @store %>
+
+<%= render 'form' %>
