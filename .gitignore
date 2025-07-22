@@ -38,3 +38,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+#データベース情報を環境変数にする設定をしているときに追記
+/.env
