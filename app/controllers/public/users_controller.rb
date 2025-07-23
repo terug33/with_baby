@@ -1,5 +1,6 @@
 class Public::UsersController < Public::BaseController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def mypage 
     @user = current_user
@@ -38,6 +39,13 @@ class Public::UsersController < Public::BaseController
 
   def user_params
     params.require(:user).permit(:name,:email)
+  end 
+
+  def correct_user 
+    user = User.find(params[:id])
+    unless current_user == user 
+      redirect_to mypage_path, alert: '権限がありません'
+    end 
   end 
 
 end
