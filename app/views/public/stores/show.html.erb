@@ -22,7 +22,7 @@
       <p>レビュー：<%= @store.description %></p>
       <p>郵便番号：<%= @store.zip_code %></p>
       <p>住所：<%= @store.address %></p>
-      <p>投稿者：<%= @store.user.name %></p>
+      <p>投稿者：<%= link_to @store.user.name, user_path(@store.user) %></p>
 
       <% if user_signed_in? &&  current_user == @store.user %>
         <%= link_to '編集', edit_store_path(@store), class: "btn btn-outline-primary btn-sm" %>
