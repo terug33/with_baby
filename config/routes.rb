@@ -31,11 +31,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     get 'about' => 'homes#about'
-    get 'mypage', to: 'users#show', as: 'mypage'
+    get 'mypage', to: 'users#mypage', as: 'mypage'
 
 
     #ユーザー編集・更新・退会・検索
-    resources :users, only: [:edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       collection do 
         get 'search'
       end 

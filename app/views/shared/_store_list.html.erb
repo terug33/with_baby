@@ -1,0 +1,17 @@
+<% if stores.any? %>
+  <% stores.each do |store| %>
+    <div>
+      <% if store.images.attached? %>
+        <% store.images.each do |image| %>
+          <%= image_tag image.variant(resize_to_limit: [600,400]), class:"img-fluid" %>
+        <% end %>
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+
+      <p><%= link_to store.name, store_path(store) %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ投稿がありません</p>
+<% end %> 

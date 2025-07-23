@@ -55,7 +55,7 @@ class Public::StoresController < Public::BaseController
 
   def destroy 
     if @store.destroy 
-      redirect_to stores_path, notice:"削除できました"
+      redirect_to mypage_path, notice:"削除できました"
     else 
       redirect_to stores_path, alert: "削除に失敗しました"
     end 

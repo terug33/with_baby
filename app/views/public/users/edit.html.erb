@@ -1,5 +1,8 @@
 <h3>プロフィール編集</h3>
 
+<%= render 'public/shared/error_messages', resource: current_user %>
+
+
 <%= form_with model: current_user, method: :patch, local: true do |f| %>
   
   <div>

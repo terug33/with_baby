@@ -1,9 +1,14 @@
 class Public::UsersController < Public::BaseController
   before_action :authenticate_user!
 
-  def show 
+  def mypage 
     @user = current_user
     @stores = @user.stores.order(created_at: :desc)  #マイページでの投稿一覧用
+  end 
+
+  def show 
+    @user = User.find(params[:id])
+    @stores = @user.stores.order(created_at: :desc)
   end 
 
   def search
