@@ -18,6 +18,8 @@ class Public::StoresController < Public::BaseController
       @stores = Store.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
     else 
       @stores = Store.none
+      flash.now[:alert]= "検索結果がありません"
+      render :search
     end 
   end 
 
