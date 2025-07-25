@@ -1,14 +1,16 @@
-#管理者側のヘッダー
-<header>
-  <nav class="navbar" style="height: 100px; display: flex; justify-content: space-between; align-items-center;">
-    <div class="header-left">
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.png', alt: 'with baby logo', class:'header-logo' %>
-      <% end %>
-    </div>
+<!--管理者側のヘッダー-->
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+  <%= link_to root_path class: "navbar-brand" do %>
+    <%= image_tag 'logo.png', alt: 'with baby logo', class:'header-logo' %>
+  <% end %>
 
-    <ul class="header-right" style="display: flex; flex-direction: row">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
       <% if admin_signed_in? %>
         <li class="nav-item">ユーザー</li>
         <li class="nav-item">店舗</li>
@@ -20,5 +22,5 @@
         <li class="nav-item">ログイン</li>
       <% end %>
     </ul>
-  </nav>
-</header>
+  </div>
+</nav>

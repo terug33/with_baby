@@ -13,6 +13,14 @@ class Public::UsersController < Public::BaseController
   end 
 
   def search
+    @keyword = params[:keyword]
+    if @keyword.present?
+      @users = User.where("name LIKE ?", "%#{@keyword}%")
+    else
+      @users = User.none
+      flash.now[:alert] = "検索結果がありません"
+      render :search
+    end 
   end
 
   def edit
