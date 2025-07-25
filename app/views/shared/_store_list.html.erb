@@ -1,17 +1,30 @@
-<% if stores.any? %>
-  <% stores.each do |store| %>
-    <div>
-      <% if store.images.attached? %>
-        <% store.images.each do |image| %>
-          <%= image_tag image.variant(resize_to_limit: [600,400]), class:"img-fluid" %>
+<div class="row">
+  <% if stores.any? %>
+    <% stores.each do |store| %>
+      <div class="col-md-5">
+        <% if store.images.attached? %>
+            <%= image_tag store.images.first.variant(resize_to_limit: [600,400]), class:"img-fluid" %>
+        <% else %>
+          <p>画像がありません</p>
         <% end %>
-      <% else %>
-        <p>画像がありません</p>
-      <% end %>
+      </div>
 
-      <p><%= link_to store.name, store_path(store) %></p>
-    </div>
-  <% end %>
-<% else %>
-  <p>まだ投稿がありません</p>
-<% end %> 
+      <div class="col-md-7">
+        <p>店舗名：<strong><%= store.name%></strong></p>
+        <p>投稿者：<%= store.user.name %></p>
+        <p>評価：<%= store.score %></p>
+        <p>カテゴリ：<%= store.category.name %></p>
+        <p>
+          <% store.tags.each do |tag| %>
+            <span>タグ：<%= tag.name %></span>
+          <% end %>
+        </p>
+        <p>レビュー：<%= truncate(store.description, length: 100) %></p>
+        <p><%= link_to "この店舗の詳細をみる", store_path(store) %></p>
+
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだ投稿がありません</p>
+  <% end %> 
+</div>

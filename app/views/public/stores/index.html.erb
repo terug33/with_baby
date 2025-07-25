@@ -6,28 +6,4 @@
 <% end %>
 
 
-<% if @stores.any? %>
-  <div>
-    <% @stores.each do |store| %>
-      <div class="card mb-4 p-3 border rounded">
-        <h4><%= link_to store.name, store_path(store) %></h4>
-
-        <p><strong>投稿者：</strong><%= store.user.name %></p>
-        <p><strong>評価：</strong><%= store.score %></p>
-        <p><strong>カテゴリ：</strong><%= store.category.name %></p>
-
-        <p><strong>タグ：</strong>
-          <% store.tags.each do |tag| %>
-            <span class="badge badge-secondary"><%= tag.name %></span>
-          <% end %>
-        </p>
-
-        <p><%= truncate(store.description, length:100) %></p>
-
-        <%= link_to '詳細を見る', store_path(store), class:"btn btn-sm btn-outline-primary" %>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>投稿がまだありません</p>
-<% end %>
+<%= render 'shared/store_list', stores: @stores %>
