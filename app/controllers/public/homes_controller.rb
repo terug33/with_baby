@@ -4,7 +4,7 @@ class Public::HomesController < Public::BaseController
   skip_before_action :authenticate_user!, only: [:top,:about]
 
   def top
-    @stores = Store.order(createde_at: :desc).limit(3)
+    @stores = Store.order(created_at: :desc).limit(3)
   end
 
   def about
