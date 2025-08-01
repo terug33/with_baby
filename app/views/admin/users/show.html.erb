@@ -1,0 +1,38 @@
+<h3><%= @user.name %>さんの詳細ページ</h3>
+
+<h3>投稿一覧(<%= @stores.total_count %>件)</h3>
+<% if @stores.present? %>
+  <div class="row">
+    <% @stores.each do |store| %>
+      <div class="col-md-4 mb-3">
+        <div class= "card h-100">
+
+          <% if store.images.attached? %>
+            <%= image_tag store.images.first, class: "card-img-top", style: "height: 200px; object-fit: contain;" %>
+          <% else %>
+            <p>画像はありません</p>
+          <% end %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= store.name %></h5>
+            <p><%= l(store.created_at, format: :short) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @stores, param_name: :stores_page %>
+<% else %>
+  <p>投稿はありません</p>
+<% end %>
+
+
+<h3>コメント一覧（<%= @comments.total_count %>件）</h3>
+<% if @comments.present? %>
+  <% @comments.each do |comment| %>
+    <div><%= link_to comment.store.name, store_path(comment.store) %>へのコメント：<%= truncate(comment.content, length: 30) %></div>
+  <% end %>
+  <%= paginate @comments, param_name: :comments_page %>
+<% else %>
+  <p>まだコメントがありません</p>
+<% end %>

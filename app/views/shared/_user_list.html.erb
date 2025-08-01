@@ -1,0 +1,21 @@
+<!--会員一覧の表-->
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>投稿数</th>
+      <th>コメント数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <td><%= user.stores.count %></td>
+        <td><%= user.comments.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

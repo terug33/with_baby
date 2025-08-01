@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <% if admin_signed_in? %>
-        <li class="nav-item">ユーザー</li>
+        <li class="nav-item"><%= link_to 'ユーザー', admin_users_path, class: "nav-link" %></li>
         <li class="nav-item">店舗</li>
         <li class="nav-item">コメント</li>
         <li class="nav-item"><%= link_to 'カテゴリ', admin_categories_path, class: "nav-link" %></li>

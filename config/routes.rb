@@ -18,6 +18,14 @@ Rails.application.routes.draw do
         get 'search'
       end 
     end 
+
+    resources :users, only: [:index, :show] do 
+      collection do
+        get 'search'
+      end 
+    end
+
+
     resources :tags, only: [:index, :create, :destroy]
     resources :categories, only: [:index, :create, :destroy]
     root to: 'homes#top'
