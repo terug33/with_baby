@@ -1,2 +1,33 @@
-<h1>Admin::Stores#show</h1>
-<p>Find me in app/views/admin/stores/show.html.erb</p>
+<h1>Admin側の店舗詳細</h1>
+
+<% if @store.images.attached? %>
+  <div class="row">
+    <div class="col-md-12">
+      <% @store.images.each do |image| %>
+        <%= image_tag image.variant(resize_to_limit: [600, 400]), class: "img-fluid rounded" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>店舗名：<%= @store.name %></h4>
+    <p>カテゴリ：<%= @store.category.name %></p>
+
+    <% @store.tags.each do |tag| %>
+      <p>タグ：<%= tag.name %></p>
+    <% end %>
+
+    <p>評価：<%= @store.score %></p>
+    <p>レビュー：<%= @store.description %></p>
+    <p>郵便番号：<%= @store.zip_code %></p>
+    <p>住所：<%= @store.address %></p>
+    <p>感情分析値：<%= @store.sentiment_score %></p>
+    <p>投稿者：<%= link_to @store.user.name, user_path(@store.user) %></p>
+
+    <% if admin_signed_in? %>
+      <%= link_to '削除する', admin_store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
+    <% end %>
+  </div>
+</div>

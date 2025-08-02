@@ -31,6 +31,7 @@ class Public::StoresController < Public::BaseController
 
   def create
     @store = current_user.stores.build(store_params)
+    @store.sentiment_score = Language.get_data(store_params[:description])
     @tags = Tag.all                                   #保存が失敗して「render :new」の場合に必要
     @categories = Category.all                        #保存が失敗して「render :new」の場合に必要
     if @store.save 

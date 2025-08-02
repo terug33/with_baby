@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       end 
     end
 
-
+    resources :comments, only: [:index]
     resources :tags, only: [:index, :create, :destroy]
     resources :categories, only: [:index, :create, :destroy]
     root to: 'homes#top'
