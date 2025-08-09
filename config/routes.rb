@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:index]
     resources :tags, only: [:index, :create, :destroy]
-    resources :categories, only: [:index, :create, :destroy]
+    resources :categories, only: [:index, :show, :create, :destroy]
     root to: 'homes#top'
   end
 
@@ -56,5 +56,7 @@ Rails.application.routes.draw do
         get 'search'
       end 
     end 
+
+    resources :categories, only: [:index, :show]
   end
 end
