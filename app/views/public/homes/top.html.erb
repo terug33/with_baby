@@ -14,11 +14,12 @@
 <div class="row">
   <aside class="col-md-3 order-md-1 order-2">
     <h2>サイドバー</h2>
+    <%= render 'public/shared/category_sidebar', categories: @categories %>
   </aside>
 
   <main class="col-md-9 order-md-2 order-1">
     <h2>メイン</h2>
-    <%= render 'shared/shop_card_list', stores: @stores %>
+    <%= render 'public/shared/shop_card_list', stores: @stores %>
   </main>
 </div>
 

@@ -4,6 +4,12 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.new
   end
 
+  def show
+    @categories = Category.all
+    @category = Category.find(params[:id])
+    @stores = @category.stores.order(created_at: :desc)
+  end 
+
   def create
     @category = Category.new(category_params)
     if @category.save
