@@ -5,6 +5,7 @@ class Admin::StoresController < Admin::BaseController
 
   def show
     @store = Store.find(params[:id])
+    @comments = @store.comments.includes(:user).order(created_at: :asc).page(params[:page]).per(5)
   end
 
   def search

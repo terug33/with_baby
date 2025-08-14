@@ -27,7 +27,25 @@
     <p>投稿者：<%= link_to @store.user.name, user_path(@store.user) %></p>
 
     <% if admin_signed_in? %>
-      <%= link_to '削除する', admin_store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
+      <%= link_to '投稿を削除する', admin_store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
     <% end %>
+
+    <h4>コメント一覧</h4>
+    <% @comments.each do |comment| %>
+      <div class="border p-2 mb-2">
+
+        <p><%= comment.content %></p>
+        <p>コメント者：<%= link_to comment.user.name, admin_user_path(comment.user) %></p>
+
+        <% if admin_signed_in? %>
+          <%= link_to 'コメントを削除する', admin_store_comment_path(@store,comment), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
+        <% end %>
+
+      </div>
+    <% end %>
+
+    <div class="d-flex justify-content-center">
+      <%= paginate @comments %>
+    </div>
   </div>
 </div>
