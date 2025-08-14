@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  #管理者ログイン用（devise）
+  #管理者用ログイン
   devise_for :admins, path: 'admin', controllers:{
     sessions: 'admin/sessions'
   }

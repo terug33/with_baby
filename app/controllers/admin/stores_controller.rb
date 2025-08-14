@@ -1,5 +1,6 @@
 class Admin::StoresController < Admin::BaseController
   def index
+    @stores = Store.includes(:user, :tags, :category).order(created_at: :desc)
   end
 
   def show
@@ -7,6 +8,14 @@ class Admin::StoresController < Admin::BaseController
   end
 
   def search
+    @keyword = params[:keyword]
+    if @keyword.present?
+      @stores = Store.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
+    else
+      @stores = Store.none
+      flash.now[:alert]="検索結果がありません"
+      render :search
+    end 
   end
 
   def destroy
