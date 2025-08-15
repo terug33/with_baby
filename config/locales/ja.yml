@@ -1,0 +1,26 @@
+ja:
+  #エラーメッセージ用
+  errors:
+    messages:
+      not_saved: "%{count}件のエラーがあるため、保存できませんでした。"
+  
+  #モデル・カラム用
+  activerecord:
+    #モデル
+    models:
+      store: "店舗投稿"
+      category: "カテゴリー"
+      tag: "タグ"
+    
+    #カラム
+    attributes:
+      store:
+        name: "店舗名"
+        category: "カテゴリー"
+        description: "レビュー"
+      
+      category:
+        name: "カテゴリー名"
+      
+      tag:
+        name: "タグ名"

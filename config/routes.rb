@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  #会員登録画面でバリデーションエラー発生後、リロードするとルーティングエラーが発生していた。その対策用。
+  devise_scope :user do 
+    unauthenticated do 
+      get '/users', to: redirect('/users/sign_up')
+    end 
+  end 
+
   #管理者用リソース
   namespace :admin do
     resources :stores, only: [:index, :show, :destroy] do 
