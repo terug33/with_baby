@@ -15,4 +15,9 @@ class Store < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true 
   validates :score, presence: true, numericality: { only_integer: true, in: 1..5 }
+
+
+#地図機能
+  geocoded_by :address
+  after_validation :geocode 
 end

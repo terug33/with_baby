@@ -75,3 +75,6 @@ gem "net-imap"
 
 #環境変数を使うためのもの（Google）
 gem 'dotenv-rails'
+
+#位置情報を扱うためのもの
+gem 'geocoder'

@@ -24,6 +24,16 @@
       <p>住所：<%= @store.address %></p>
       <p>投稿者：<%= link_to @store.user.name, user_path(@store.user) %></p>
 
+      <div id="map" 
+        style="width:100%; height:300px;" 
+        class="mb-3 border" 
+        data-lat="<%= @store.latitude %>"
+        data-lng="<%= @store.longitude %>"
+        data-name="<%= j @store.name %>"
+        data-address="<%= j @store.address %>">
+      </div>
+      <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+
       <% if user_signed_in? &&  current_user == @store.user %>
         <%= link_to '編集', edit_store_path(@store), class: "btn btn-outline-primary btn-sm" %>
         <%= link_to '削除する', store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>

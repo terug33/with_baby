@@ -13,7 +13,7 @@
         <!--<li class="nav-item"><%= link_to "アバウト", about_path, class: "nav-link" %></li>-->
       <% if user_signed_in? %>
         <li class="nav-item"><%= link_to "店舗一覧", stores_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "新規店舗登録", new_store_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "新規店舗登録", new_store_path, class: "nav-link", data: {turbolinks: "false"}  %></li>
         <li class="nav-item"><%= link_to "マイページ", mypage_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
       <% else %>
