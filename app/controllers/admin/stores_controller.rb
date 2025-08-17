@@ -22,7 +22,7 @@ class Admin::StoresController < Admin::BaseController
   def destroy
     @store = Store.find(params[:id])
     if @store.destroy
-      redirect_to admin_root_path, notice:"削除できました"
+      redirect_to admin_stores_path, notice:"削除できました"
     else
       render :show, alert: "削除に失敗しました"
     end 

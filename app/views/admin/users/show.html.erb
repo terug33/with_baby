@@ -7,19 +7,21 @@
   <div class="row">
     <% @stores.each do |store| %>
       <div class="col-md-4 mb-3">
-        <div class= "card h-100">
+        <%= link_to admin_store_path(store), class: "text-reset text-decoration-none" do %>
+          <div class= "card h-100">
 
-          <% if store.images.attached? %>
-            <%= image_tag store.images.first, class: "card-img-top", style: "height: 200px; object-fit: contain;" %>
-          <% else %>
-            <p>画像はありません</p>
-          <% end %>
+            <% if store.images.attached? %>
+              <%= image_tag store.images.first, class: "card-img-top", style: "height: 200px; object-fit: contain;" %>
+            <% else %>
+              <p>画像はありません</p>
+            <% end %>
 
-          <div class="card-body">
-            <h5 class="card-title"><%= store.name %></h5>
-            <p><%= l(store.created_at, format: :short) %></p>
+            <div class="card-body">
+              <h5 class="card-title"><%= store.name %></h5>
+              <p><%= l(store.created_at, format: :short) %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
