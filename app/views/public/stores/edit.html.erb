@@ -1,4 +1,4 @@
 <!--バリデーションエラーのメッセージのパーシャル-->
 <%= render 'public/shared/error_messages', resource: @store %>
 
-<%= render 'form' %>
+<%= render 'form',store: @store, categories: @categories, tags: @tags %>
