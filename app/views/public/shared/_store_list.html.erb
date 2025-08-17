@@ -3,7 +3,7 @@
 <div class="row">
   <% if stores.any? %>
     <% stores.each do |store| %>
-      <div class="col-md-5">
+      <div class="col-md-5 mb-4">
         <% if store.images.attached? %>
           <%= link_to store_path(store) do %>
             <%= image_tag store.images.first.variant(resize_to_limit: [600,400]), class:"img-fluid" %>
@@ -13,7 +13,7 @@
         <% end %>
       </div>
 
-      <div class="col-md-7">
+      <div class="col-md-7 mb-5">
         <p>店舗名：<strong><%= store.name%></strong></p>
         <p>投稿者：<%= store.user.name %></p>
         <p>評価：<%= store.score %></p>
@@ -25,8 +25,8 @@
         </p>
         <p>レビュー：<%= truncate(store.description, length: 100) %></p>
         <p><%= link_to "この店舗の詳細をみる", store_path(store) %></p>
-
       </div>
+      
     <% end %>
   <% else %>
     <p>まだ投稿がありません</p>

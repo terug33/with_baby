@@ -1,10 +1,11 @@
-<h2>public側の投稿一覧</h2>
 
 <!--店舗検索のフォーム-->
-<%= form_with url: search_stores_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, placeholder: "店舗名やレビュー内容で検索できます" %>
-  <%= f.submit "検索する" %>
-<% end %>
+<div class="mb-4">
+  <%= form_with url: search_stores_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, placeholder: "店舗名またはキーワード" %>
+    <%= f.submit "検索する" %>
+  <% end %>
+</div>
 
 <!--店舗一覧-->
 <%= render 'public/shared/store_list', stores: @stores %>

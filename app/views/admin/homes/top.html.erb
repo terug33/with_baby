@@ -1,13 +1,12 @@
-<h1>Admin側のダッシュボード</h1>
-
+<!--管理者のダッシュボード-->
 <div class="row">
-  <aside class="col-md-3 order-md-1 order-2">
-    <h2>サイドバー</h2>
+  
+  <aside class="col-md-3 order-md-1 order-1 mb-4">
     <%= render 'admin/shared/category_sidebar', categories: @categories %>
   </aside>
 
-  <main class="col-md-9 order-md-2 order-1">
-    <h2>メイン</h2>
+  <main class="col-md-9 order-md-2 order-2">
+    <h4 class="mb-4">新着店舗</h4>
     <%= render 'admin/shared/shop_card_list', stores: @stores %>
   </main>
 </div>
