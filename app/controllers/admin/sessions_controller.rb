@@ -3,6 +3,9 @@
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  layout 'admin'
+
+
   def new
     super
   end

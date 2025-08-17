@@ -1,10 +1,12 @@
-<h3>admin側の店舗一覧</h3>
+<h3>店舗一覧ページ</h3>
 
 <!--店舗検索のフォーム-->
-<%= form_with url:search_admin_stores_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, placeholder: "店舗名や特徴" %>
-  <%= f.submit "検索する" %>
-<% end %>
-
+<div class="mb-4">
+  <%= form_with url:search_admin_stores_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, placeholder: "店舗名や特徴" %>
+    <%= f.submit "検索する" %>
+  <% end %>
+</div
+>
 <!--店舗一覧-->
 <%= render 'admin/shared/store_list', stores: @stores %>

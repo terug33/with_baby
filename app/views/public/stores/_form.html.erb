@@ -1,51 +1,70 @@
-<!--店舗投稿の新規と編集用の共通フォーム-->
+<!--店舗の新規投稿と編集の共通フォーム-->
 
 <%= form_with model: @store, local: true do |f| %>
-  <div>
-    <%= f.label :name, '店舗名' %><br>
-    <%= f.text_field :name %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :name, '店舗名', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :description, 'レビュー本文' %><br>
-    <%= f.text_area :description %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :description, 'レビュー本文', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7">
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :score, '評価(1~5)' %><br>
-    <%= f.select :score, options_for_select(1..5, f.object.score) %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :score, '評価(1~5)', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7 text-center text-md-left">
+      <%= f.select :score, options_for_select(1..5, f.object.score), class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :category_id, 'カテゴリ' %><br>
-    <%= f.collection_select :category_id, @categories, :id, :name, prompt: '選択してください' %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :category_id, 'カテゴリ', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7 text-center text-md-left">
+      <%= f.collection_select :category_id, @categories, :id, :name, prompt: '選択してください', class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :tag_ids, 'タグ（複数選択可）' %><br>
-    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name do |cb| %>
-      <div>
-        <%= cb.check_box %><%= cb.text %>
-      </div>
-    <% end %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :tag_ids, 'タグ（複数選択可）', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7 text-center text-md-left">
+      <%= f.collection_check_boxes :tag_ids, @tags, :id, :name do |cb| %>
+        <div>
+          <%= cb.check_box %>
+          <%= cb.text %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :zip_code, '郵便番号' %><br>
-    <%= f.text_field :zip_code %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :zip_code, '郵便番号', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7">
+      <%= f.text_field :zip_code, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :address, '住所' %><br>
-    <%= f.text_field :address %>
+  <div class="row mb-4 align-items-center">
+    <%= f.label :address, '住所', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7">
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :images, '店舗画像(複数可)' %><br>
-    <%= f.file_field :images, multiple: true %>
+  <div class="row mb-5 align-items-center">
+    <%= f.label :images, '店舗画像(複数可)', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-7">
+      <%= f.file_field :images, multiple: true, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.submit @store.new_record? ? "登録する" : "店舗情報を更新する", class:"btn btn-primary btn-sm" %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= f.submit @store.new_record? ? "登録する" : "店舗情報を更新する", class:"btn btn-primary btn-sm" %>
+    </div>
   </div>
 <% end %>

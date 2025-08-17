@@ -1,4 +1,4 @@
-<h1>Admin側の店舗詳細</h1>
+<h4 class="mb-4">店舗詳細ページ</h4>
 
 <% if @store.images.attached? %>
   <div class="row">
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<div class="row">
+<div class="row mt-4">
   <div class="col-md-12">
     <h4>店舗名：<%= @store.name %></h4>
     <p>カテゴリ：<%= @store.category.name %></p>
@@ -30,7 +30,9 @@
       <%= link_to '投稿を削除する', admin_store_path(@store), method: :delete, class: "btn btn-outline-danger btn-sm", data:{confirm: '本当に削除しますか？'} %>
     <% end %>
 
-    <h4>コメント一覧</h4>
+    <hr>
+
+    <h4 class="mt-4">コメント一覧</h4>
     <% @comments.each do |comment| %>
       <div class="border p-2 mb-2">
 

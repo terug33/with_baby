@@ -1,3 +1,5 @@
+<!--トップページの新着店舗一覧用-->
+
 <div class="row">
   <% stores.each do |store| %>
     <div class="col-md-4 mb-3">
@@ -9,8 +11,8 @@
           <p>画像はありません</p>
         <% end %>
 
-        <div class="card-body">
-          <h5 class="card-title"><%= store.name %></h5>
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-title text-center"><%= store.name %></h5>
           <%= link_to '詳細を見る', store_path(store), class: "btn btn-primary" %>
         </div>
       </div>

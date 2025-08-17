@@ -1,15 +1,17 @@
-<h2>admin側のカテゴリページ</h2>
+<h4 class="mb-4">カテゴリー管理ページ</h4>
 
-<ul>
+<ul class="list-group mb-4">
   <% @categories.each do |category| %>
-    <li>
-      <%= category.name %>
+    <li class="list-group-item d-flex align-items-center">
+      <span class="me-3" style="width: 7rem;"><%= category.name %></span>
       <%= link_to '削除', admin_category_path(category), method: :delete, class: "btn btn-sm btn-danger", data: {confirm: '本当に削除しますか？'} %>
     </li>
   <% end %>
 </ul>
 
-<h3>新しいカテゴリーを追加</h3>
+<hr>
+
+<h4 class="mb-4">新しいカテゴリーを追加</h4>
 <%= form_with model: [:admin, @category], local: true do |f| %>
 
   <%= render 'admin/shared/error_messages', resource: @category %>

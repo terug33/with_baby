@@ -1,9 +1,9 @@
-<h2>タグ一覧</h2>
+<h4 class="mb-4">タグの管理ページ</h4>
 
-<ul>
+<ul class="list-group mb-4">
   <% @tags.each do |tag| %>
-    <li>
-      <%= tag.name %>
+    <li class="list-group-item d-flex align-items-center" >
+      <span class="me-3" style="width: 7rem;" ><%= tag.name %></span>
       <%= link_to '削除', admin_tag_path(tag), method:  :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
     </li>
   <% end %>
@@ -15,8 +15,8 @@
   <%= render 'admin/shared/error_messages', resource: @tag %>  
 
   <div class="form-group">
-    <%= f.label :name, "タグ名" %>
-    <%= f.text_field :name, class: "form-control" %>
+    <h5>新しくタグを追加する</h5>
+    <%= f.text_field :name, class: "form-control", placeholder: "追加するタグ名" %>
   </div>
 
   <%= f.submit "タグを追加", class: "btn btn-primary mt-2" %>
