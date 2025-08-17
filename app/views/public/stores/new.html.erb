@@ -15,7 +15,8 @@
 
   <div>
     <%= f.label :score, '評価(1~5)' %><br>
-    <%= f.select :score, options_for_select(1..5) %>
+    <%#= f.select :score, options_for_select(1..5) %>
+    <div id="score"></div>
   </div>
 
   <div>
@@ -51,6 +52,15 @@
     <%= f.submit '登録する' %>
   </div>
 <% end %>
+
+<script>
+  $('#score').raty({
+    starHalf: '<%= asset_path("star-half.png") %>',
+    starOff: '<%= asset_path("star-off.png") %>',
+    starOn: '<%= asset_path("star-on.png") %>',
+    scoreName: 'store[score]'
+  })
+</script>
 
 <!--地図機能-->
 <%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

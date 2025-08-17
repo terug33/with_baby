@@ -20,7 +20,7 @@
         <p>タグ：<%= tag.name %></p>
       <% end %>
 
-      <p>評価：<%= @store.score %></p>
+      <p>評価：<div id="score"></div></p>
       <p>レビュー：<%= @store.description %></p>
       <p>郵便番号：<%= @store.zip_code %></p>
       <p>住所：<%= @store.address %></p>
@@ -65,3 +65,14 @@
       <% end %>
     </div>
   </div>
+
+
+  <script>
+  $('#score').raty({
+    starHalf: '<%= asset_path("star-half.png") %>',
+    starOff: '<%= asset_path("star-off.png") %>',
+    starOn: '<%= asset_path("star-on.png") %>',
+    score: '<%= @store.score %>',
+    readOnly: true
+  })
+</script>

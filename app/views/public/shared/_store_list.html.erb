@@ -16,7 +16,7 @@
       <div class="col-md-7 mb-5">
         <p>店舗名：<strong><%= store.name%></strong></p>
         <p>投稿者：<%= store.user.name %></p>
-        <p>評価：<%= store.score %></p>
+        <p>評価：<div id="score_<%= store.id %>"></div></p>
         <p>カテゴリ：<%= store.category.name %></p>
         <p>
           <% store.tags.each do |tag| %>
@@ -26,7 +26,16 @@
         <p>レビュー：<%= truncate(store.description, length: 100) %></p>
         <p><%= link_to "この店舗の詳細をみる", store_path(store) %></p>
       </div>
-      
+      <script>
+        $('#score_<%= store.id %>').raty({
+          starHalf: '<%= asset_path("star-half.png") %>',
+          starOff: '<%= asset_path("star-off.png") %>',
+          starOn: '<%= asset_path("star-on.png") %>',
+          score: '<%= store.score %>',
+          readOnly: true
+        })
+      </script>
+
     <% end %>
   <% else %>
     <p>まだ投稿がありません</p>

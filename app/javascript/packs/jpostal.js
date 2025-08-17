@@ -1,10 +1,10 @@
 // 地図機能
 
 function jpostal() {
-  $('#zipcode').jpostal({
-    postcode : ['#zipcode'],
+  $('#store_zip_code').jpostal({
+    postcode : ['#store_zip_code'],
     address : {
-      '#post_image_address': '%3%4%5'
+      '#store_address': '%3%4%5'
     }
   });
 }
