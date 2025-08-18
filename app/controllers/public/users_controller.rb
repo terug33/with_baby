@@ -4,7 +4,7 @@ class Public::UsersController < Public::BaseController
 
   def mypage 
     @user = current_user
-    @stores = @user.stores.order(created_at: :desc)  #マイページでの投稿一覧用
+    @stores = @user.stores.order(created_at: :desc).page(params[:page]).per(5)  #マイページでの投稿一覧用
   end 
 
   def show 

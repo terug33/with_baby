@@ -1,7 +1,12 @@
-<h2>お店を新しく登録する</h2>
+<!--店舗の新規投稿ページ-->
 
+<!--エラーメッセージの呼び出し-->
 <%= render 'public/shared/error_messages', resource: @store %>
 
+
+<h3>お店を新しく登録する</h3>
+
+<!--店舗の新規投稿フォームの呼び出し-->
 <%= render 'form', store: @store, categories: @categories, tags: @tags %>
 
 

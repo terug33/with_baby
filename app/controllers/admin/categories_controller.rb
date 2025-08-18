@@ -7,7 +7,7 @@ class Admin::CategoriesController < Admin::BaseController
   def show
     @categories = Category.all
     @category = Category.find(params[:id])
-    @stores = @category.stores.order(created_at: :desc)
+    @stores = @category.stores.order(created_at: :desc).page(params[:page]).per(5)
   end 
 
   def create

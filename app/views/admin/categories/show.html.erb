@@ -1,3 +1,10 @@
+<!--サイドバーのカテゴリー一覧から遷移して、そのカテゴリーに属する投稿の一覧を表示するページ-->
+
 <div class="contain">
   <%= render 'admin/shared/store_list', stores: @stores %>
+</div>
+
+<!--ページネーションの表示-->
+<div class="d-flex justify-content-center">
+  <%= paginate @stores %>
 </div>

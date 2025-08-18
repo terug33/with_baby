@@ -2,35 +2,45 @@
 
 <%= form_with model: store, local: true do |f| %>
   <div class="row mb-4 align-items-center">
-    <%= f.label :name, '店舗名', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :name, '店舗名'%>
+    </div>
     <div class="col-md-7">
       <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :description, 'レビュー本文', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :description, 'レビュー本文' %>
+    </div>
     <div class="col-md-7">
       <%= f.text_area :description, class: "form-control" %>
     </div>
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :score, '評価(1~5)', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :score, '評価(1~5)' %>
+    </div>
     <div class="col-md-7 text-center text-md-left">
       <div id="score"></div>
     </div>
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :category_id, 'カテゴリ', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :category_id, 'カテゴリ' %>
+    </div>
     <div class="col-md-7 text-center text-md-left">
       <%= f.collection_select :category_id, categories, :id, :name, prompt: '選択してください', class: "form-control" %>
     </div>
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :tag_ids, 'タグ（複数選択可）', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :tag_ids, 'タグ（複数選択可）' %>
+    </div>
     <div class="col-md-7 text-center text-md-left">
       <%= f.collection_check_boxes :tag_ids, tags, :id, :name do |cb| %>
         <div>
@@ -42,21 +52,27 @@
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :zip_code, '郵便番号', class: "col-md-3 text-center text-md-right" %>
+  <div class="col-md-3 text-center text-md-right">
+    <%= f.label :zip_code, '郵便番号' %>
+  </div>
     <div class="col-md-7">
       <%= f.text_field :zip_code, class: "form-control" %>
     </div>
   </div>
 
   <div class="row mb-4 align-items-center">
-    <%= f.label :address, '住所', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :address, '住所' %>
+    </div>
     <div class="col-md-7">
       <%= f.text_field :address, class: "form-control" %>
     </div>
   </div>
 
   <div class="row mb-5 align-items-center">
-    <%= f.label :images, '店舗画像(複数可)', class: "col-md-3 text-center text-md-right" %>
+    <div class="col-md-3 text-center text-md-right">
+      <%= f.label :images, '店舗画像(複数可)' %>
+    </div>
     <div class="col-md-7">
       <%= f.file_field :images, multiple: true, class: "form-control" %>
     </div>
