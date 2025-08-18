@@ -1,4 +1,4 @@
-<!--店舗一覧・店舗検索結果ページで使うパーシャル-->
+<!--店舗一覧・マイページ・店舗検索結果ページで使うパーシャル-->
 
 <div class="row">
   <% if stores.any? %>
@@ -32,7 +32,8 @@
           starOff: '<%= asset_path("star-off.png") %>',
           starOn: '<%= asset_path("star-on.png") %>',
           score: '<%= store.score %>',
-          readOnly: true
+          readOnly: true,
+          score: <%= store.score.present? ? store.score : 0 %>
         })
       </script>
 

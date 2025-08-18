@@ -74,6 +74,7 @@
     starHalf: '<%= asset_path("star-half.png") %>',
     starOff: '<%= asset_path("star-off.png") %>',
     starOn: '<%= asset_path("star-on.png") %>',
-    scoreName: 'store[score]'
+    scoreName: 'store[score]',
+    score: <%= store.score.present? ? store.score : 0 %>
   })
 </script>
