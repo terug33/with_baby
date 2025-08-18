@@ -1,3 +1,8 @@
 <div class="contain">
   <%= render 'public/shared/store_list', stores: @stores %>
 </div>
+
+<!--ページネーションの表示-->
+<div class="d-flex justify-content-center">
+  <%= paginate @stores %>
+</div>

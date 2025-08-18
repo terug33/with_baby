@@ -18,6 +18,7 @@ ja:
         name: "店舗名"
         category: "カテゴリー"
         description: "レビュー"
+        score: "評価"
       
       category:
         name: "カテゴリー名"

@@ -5,7 +5,7 @@ class Public::StoresController < Public::BaseController
 
 
   def index
-    @stores = Store.includes(:user, :tags, :category).order(created_at: :desc)
+    @stores = Store.includes(:user, :tags, :category).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show
@@ -15,7 +15,7 @@ class Public::StoresController < Public::BaseController
   def search 
     @keyword = params[:keyword]
     if @keyword.present?
-      @stores = Store.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
+      @stores = Store.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(5)
     else 
       @stores = Store.none
       flash.now[:alert]= "検索結果がありません"
