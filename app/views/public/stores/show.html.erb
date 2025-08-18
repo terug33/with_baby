@@ -3,7 +3,7 @@
 <!--エラーメッセージの表示-->
 <% if @store.images.attached? %>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-4">
       <% @store.images.each do |image| %>
         <%= image_tag image.variant(resize_to_limit: [600, 400]), class: "img-fluid rounded" %>
       <% end %>
@@ -45,16 +45,23 @@
 
 
       <h4 class="mb-4">コメント一覧</h4>
-      <% @store.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <div class="border p-2 mb-2">
-          <p><%= comment.user.name %></p>
-          <p><%= comment.content %></p>
-
-          <% if comment.user == current_user %>
-            <%= link_to '削除', store_comment_path(@store,comment), method: :delete, class: "btn btn-sm btn-outline-danger", data:{confirm: "本当に削除しますか？"} %>
-          <% end %>
+          <div class="mb-2">
+            <span class="text-muted small"><%= comment.user.name %></span>
+            <span class="text-muted small"><%= l(comment.created_at, format: :short) %></span>
+            <% if comment.user == current_user %>
+              <%= link_to 'コメントを削除する', store_comment_path(@store,comment), method: :delete, class: "btn btn-sm btn-outline-danger", data:{confirm: "本当に削除しますか？"} %>
+            <% end %>
+          </div>
+          <span><%= comment.content %></span>
         </div>
       <% end %>
+
+      <!--ページネーションの表示-->
+      <div class="d-flex justify-content-center">
+        <%= paginate @comments %>
+      </div>
 
       <hr>
 

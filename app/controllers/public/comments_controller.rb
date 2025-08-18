@@ -7,7 +7,7 @@ class Public::CommentsController < Public::BaseController
     if @comment.save 
       redirect_to store_path(@store), notice: 'コメントを投稿しました'
     else 
-      render 'stores/show'
+      redirect_to store_path(@store), alert: "コメントに失敗しました"
     end 
   end 
 

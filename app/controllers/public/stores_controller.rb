@@ -9,6 +9,7 @@ class Public::StoresController < Public::BaseController
   end
 
   def show
+    @comments = @store.comments.includes(:user).order(created_at: :asc).page(params[:page]).per(5)
     @comment = Comment.new
   end
 
