@@ -25,3 +25,7 @@ ja:
       
       tag:
         name: "タグ名"
+
+  time:
+    formats:
+      custom: "%Y年%m月%d日"
